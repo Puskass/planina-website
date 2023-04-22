@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Button from "../shared/UIElemets/Button";
+import Button from "../shared/UIElements/Button";
 import { useHistory } from "react-router-dom";
 
 const AddTour = () => {
