@@ -16,19 +16,19 @@ const App = () => {
         <Route path="/" exact>
           <Home />
         </Route>
-        <Route path="/O-Nama">
+        <Route path="/about-us">
           <AboutUs />
         </Route>
-        <Route path="/Kontakt">
+        <Route path="/contact">
           <Contact />
         </Route>
-        <Route path="/Clanstvo">
+        <Route path="/membership">
           <Membership />
         </Route>
-        <Route path="/Pronađi-turu">
+        <Route path="/find-tour">
           <ToursList />
         </Route>
-        <Route path="/Dodaj-turu">
+        <Route path="/add-tour">
           <AddTour />
         </Route>
       </Switch>

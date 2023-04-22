@@ -38,7 +38,7 @@ const ToursList = () => {
                 <span> {tour.date} </span>
               </div>
               <div className="">
-                <Button>Saznaj više</Button>
+                <Button>Learn more</Button>
               </div>
             </div>
           </div>

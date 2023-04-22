@@ -5,22 +5,22 @@ const Navbar = () => {
   return (
     <ul className="flex justify-evenly items-center bg-red-700 p-4 font-semibold text-white">
       <Link to="/">
-        <li>Početna</li>
+        <li>Home</li>
       </Link>
-      <Link to="/O-Nama">
-        <li>O Nama</li>
+      <Link to="/about-us">
+        <li>About Us</li>
       </Link>
-      <Link to="/Kontakt">
-        <li>Kontakt</li>
+      <Link to="/contact">
+        <li>Contact</li>
       </Link>
-      <Link to="/Clanstvo">
-        <li>Članstvo</li>
+      <Link to="/membership">
+        <li>Membership</li>
       </Link>
-      <Link to="/Pronađi-turu">
-        <li>Pronađi turu</li>
+      <Link to="/find-tour">
+        <li>Find tour</li>
       </Link>
-      <Link to="/Dodaj-turu">
-        <li>Dodaj turu</li>
+      <Link to="/add-tour">
+        <li>Add tour</li>
       </Link>
     </ul>
   );
