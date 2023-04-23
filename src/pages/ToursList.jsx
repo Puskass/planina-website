@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Button from "../shared/UIElements/Button";
+import Button from "../shared/UIElemets/Button";
+import { Link } from "react-router-dom";
 
 const ToursList = () => {
   const [tours, setTours] = useState([]);
@@ -37,8 +38,10 @@ const ToursList = () => {
                 <h1 className="text-xl font-medium py-3">{tour.tour}</h1>
                 <span> {tour.date} </span>
               </div>
-              <div className="">
-                <Button>Learn more</Button>
+              <div>
+                <Button>
+                  <Link to={`/tours/${tour.id}`}>Read more</Link>
+                </Button>
               </div>
             </div>
           </div>

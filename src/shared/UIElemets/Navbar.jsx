@@ -16,7 +16,7 @@ const Navbar = () => {
       <Link to="/membership">
         <li>Membership</li>
       </Link>
-      <Link to="/find-tour">
+      <Link to="/tours">
         <li>Find tour</li>
       </Link>
       <Link to="/add-tour">

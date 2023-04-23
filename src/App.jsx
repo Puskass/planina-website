@@ -6,7 +6,8 @@ import Contact from "./pages/Contact";
 import Membership from "./pages/Membership";
 import ToursList from "./pages/ToursList";
 import AddTour from "./pages/AddTour";
-import Navbar from "./shared/UIElements/Navbar";
+import Navbar from "./shared/UIElemets/Navbar";
+import TourDetails from "./pages/TourDetails";
 
 const App = () => {
   return (
@@ -25,8 +26,11 @@ const App = () => {
         <Route path="/membership">
           <Membership />
         </Route>
-        <Route path="/find-tour">
+        <Route path="/tours" exact>
           <ToursList />
+        </Route>
+        <Route path="/tours/:id">
+          <TourDetails />
         </Route>
         <Route path="/add-tour">
           <AddTour />

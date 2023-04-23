@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Button from "../shared/UIElements/Button";
+import Button from "../shared/UIElemets/Button";
 import { useHistory } from "react-router-dom";
 
 const AddTour = () => {
@@ -27,6 +27,7 @@ const AddTour = () => {
       price: enteredPrice,
     });
 
+    history.push("/tours");
     setEnteredImageURL("");
     setEnteredName("");
     setEnteredDate("");
@@ -34,8 +35,6 @@ const AddTour = () => {
     setEnteredCond("");
     setEnteredTech("");
     setEnteredPrice("");
-
-    history.push("/Pronađi-turu");
   };
 
   return (
@@ -77,7 +76,7 @@ const AddTour = () => {
       <div className="flex justify-around">
         <select
           onChange={(e) => setEnteredCond(e.target.value)}
-          value={enteredCond}
+          defaultValue={enteredCond}
           type="text"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
