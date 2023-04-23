@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Button from "../shared/UIElements/Button";
+import Button from "../shared/UIElemets/Button";
 
 const ToursList = () => {
   const [tours, setTours] = useState([]);
@@ -21,7 +21,6 @@ const ToursList = () => {
           date: tours[key].date,
         });
       }
-      console.log(transformedTours);
       setTours(transformedTours);
     };
     doRequest();

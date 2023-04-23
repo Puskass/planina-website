@@ -6,7 +6,7 @@ import Contact from "./pages/Contact";
 import Membership from "./pages/Membership";
 import ToursList from "./pages/ToursList";
 import AddTour from "./pages/AddTour";
-import Navbar from "./shared/UIElements/Navbar";
+import Navbar from "./shared/UIElemets/Navbar";
 
 const App = () => {
   return (

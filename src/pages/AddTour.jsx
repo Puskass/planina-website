@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Button from "../shared/UIElements/Button";
+import Button from "../shared/UIElemets/Button";
 import { useHistory } from "react-router-dom";
 
 const AddTour = () => {
@@ -12,6 +12,7 @@ const AddTour = () => {
   const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
+  const [guides, setGuides] = useState([]);
   const history = useHistory();
 
   const submitTourHandler = async (e) => {
@@ -35,7 +36,7 @@ const AddTour = () => {
     setEnteredTech("");
     setEnteredPrice("");
 
-    history.push("/Pronađi-turu");
+    history.push("/find-tour");
   };
 
   return (
@@ -67,6 +68,7 @@ const AddTour = () => {
           type="date"
           className="p-2 my-2 border w-[50%] rounded-md border-gray-400"
         />
+ 
       </div>
       <textarea
         onChange={(e) => setEnteredDescription(e.target.value)}
