@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Button from "../shared/UIElemets/Button";
 
 const TourDetails = () => {
   const params = useParams();
@@ -15,26 +16,30 @@ const TourDetails = () => {
     };
     doRequest();
   }, [params.id]);
-  console.log(tour);
+
   return (
-    <div className="max-w-lg m-auto">
-      <h1>TourDetails</h1>
+    <div className="max-w-lg m-auto py-4">
       <img src={tour.imageURL} />
-      <h1>{tour.name} </h1>
-      <div>{tour.date} </div>
+      <h1 className="font-semibold text-2xl py-2"> {tour.name} </h1>
+      <div className="font-medium"> {tour.date} </div>
       {/* GET request weather API-u */}
-      <h2>Opis ture</h2>
-      <p> {tour.description} </p>
-      <h2>Zahtjevnost</h2>
-      <span>
+      <h2 className="font-semibold text-xl py-2">Tour description</h2>
+      <p className="text-lg"> {tour.description} </p>
+      <h2 className="font-semibold text-xl py-2">Demanding</h2>
+      <span className="text-lg">
         {tour.condition}/{tour.technique}
       </span>
-      <h2>Vodiči</h2>
+      <h2 className="font-semibold text-xl py-2">Guides</h2>
       {/* Dodati vodice */}
-       <h2>Cijena</h2>
-       <span> {tour.price}$ </span> 
-       <h2>Komentarišite</h2>
-       <textarea placeholder="Ostavite komentar"></textarea>
+      <h2 className="font-semibold text-xl py-2">Price</h2>
+      <span className="text-lg font-medium "> {tour.price}$ </span>
+      <div>
+        <h2 className="font-semibold text-xl py-2">Comment/Ask us a questuion</h2>
+        <textarea placeholder="Ostavite komentar"></textarea>
+      </div>
+      <div className="text-center">
+        <Button>Sign up for a tour!</Button>
+      </div>
     </div>
   );
 };

@@ -42,7 +42,7 @@ const AddTour = () => {
       onSubmit={submitTourHandler}
       className="flex flex-col max-w-lg m-auto pt-[6rem] "
     >
-      <h1 className="font-semibold mb-3 text-2xl">Dodajte turu:</h1>
+      <h1 className="font-semibold mb-3 text-2xl">Add a tour:</h1>
 
       <input
         onChange={(e) => setEnteredImageURL(e.target.value)}
@@ -119,7 +119,7 @@ const AddTour = () => {
         className="p-2 my-2 border rounded-md border-gray-400"
       />
       <div className="flex justify-center my-2 ">
-        <Button type="submit">Dodaj turu</Button>
+        <Button type="submit">Add tour</Button>
       </div>
     </form>
   );
