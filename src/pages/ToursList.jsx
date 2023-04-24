@@ -1,16 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Button from "../shared/UIElemets/Button";
+import Loading from "../components/Loading";
 
 const ToursList = () => {
   const [tours, setTours] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const doRequest = async () => {
       const { data: tours } = await axios.get(
         `${process.env.REACT_APP_FIREBASE_URL}/tours.json`
       );
-
+      setLoading(true);
       const transformedTours = [];
 
       for (const key in tours) {
@@ -28,20 +30,24 @@ const ToursList = () => {
   return (
     <div className="py-6">
       <>
-        {tours.map((tour) => (
-          <div key={tour.id} className="max-w-lg mx-auto mt-4">
-            <img src={tour.imageURL} />
-            <div className="flex items-center justify-between ">
-              <div>
-                <h1 className="text-xl font-medium py-3">{tour.tour}</h1>
-                <span> {tour.date} </span>
-              </div>
-              <div className="">
-                <Button>Learn more</Button>
+        {loading ? (
+          tours.map((tour) => (
+            <div key={tour.id} className="max-w-lg mx-auto mt-4">
+              <img src={tour.imageURL} />
+              <div className="flex items-center justify-between ">
+                <div>
+                  <h1 className="text-xl font-medium py-3">{tour.tour}</h1>
+                  <span> {tour.date} </span>
+                </div>
+                <div>
+                  <Button>Learn more</Button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <Loading />
+        )}
       </>
     </div>
   );
