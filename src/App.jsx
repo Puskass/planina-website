@@ -8,6 +8,7 @@ import ToursList from "./pages/ToursList";
 import AddTour from "./pages/AddTour";
 import Navbar from "./shared/UIElemets/Navbar";
 import TourDetails from "./pages/TourDetails";
+import ErrorMessage from "./pages/ErrorMessage";
 
 const App = () => {
   return (
@@ -34,6 +35,9 @@ const App = () => {
         </Route>
         <Route path="/add-tour">
           <AddTour />
+        </Route>
+        <Route path="*">
+          <ErrorMessage />
         </Route>
       </Switch>
     </Router>

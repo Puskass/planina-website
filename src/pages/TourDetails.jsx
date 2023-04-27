@@ -19,7 +19,7 @@ const TourDetails = () => {
 
   return (
     <div className="max-w-lg m-auto py-4">
-      <img src={tour.imageURL} />
+      <img src={tour.imageURL} alt="Mountain"/>
       <h1 className="font-semibold text-2xl py-2"> {tour.name} </h1>
       <div className="font-medium"> {tour.date} </div>
       {/* GET request weather API-u */}
