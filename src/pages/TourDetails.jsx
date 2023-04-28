@@ -37,10 +37,10 @@ const TourDetails = () => {
         <h2 className="font-semibold text-xl py-2">
           Comment/Ask us a questuion
         </h2>
-        <div className="flex items-center">
+        <div className="px-8">
           <textarea
             placeholder="Ostavite komentar"
-            className="w-[50%] p-2 my-2 border rounded-md border-gray-400"
+            className="w-[100%] p-2 my-2 border rounded-md border-gray-400"
           ></textarea>
           {/* Komentari */}
         </div>
