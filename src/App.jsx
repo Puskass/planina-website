@@ -36,8 +36,8 @@ const App = () => {
         <Route path="/add-tour">
           <AddTour />
         </Route>
-        <Route path="*">
-          <ErrorMessage />
+        <Route path="*" exact>
+          <h1>NEMA</h1>
         </Route>
       </Switch>
     </Router>

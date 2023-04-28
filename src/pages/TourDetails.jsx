@@ -19,7 +19,7 @@ const TourDetails = () => {
 
   return (
     <div className="max-w-lg m-auto py-4">
-      <img src={tour.imageURL} alt="Mountain"/>
+      <img src={tour.imageURL} alt="Mountain" />
       <h1 className="font-semibold text-2xl py-2"> {tour.name} </h1>
       <div className="font-medium"> {tour.date} </div>
       {/* GET request weather API-u */}
@@ -34,8 +34,16 @@ const TourDetails = () => {
       <h2 className="font-semibold text-xl py-2">Price</h2>
       <span className="text-lg font-medium "> {tour.price}$ </span>
       <div>
-        <h2 className="font-semibold text-xl py-2">Comment/Ask us a questuion</h2>
-        <textarea placeholder="Ostavite komentar"></textarea>
+        <h2 className="font-semibold text-xl py-2">
+          Comment/Ask us a questuion
+        </h2>
+        <div className="flex items-center">
+          <textarea
+            placeholder="Ostavite komentar"
+            className="w-[50%] p-2 my-2 border rounded-md border-gray-400"
+          ></textarea>
+          {/* Komentari */}
+        </div>
       </div>
       <div className="text-center">
         <Button>Sign up for a tour!</Button>

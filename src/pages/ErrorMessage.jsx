@@ -13,4 +13,4 @@ const ErrorMessage = () => {
   );
 }
 
-export default ErrorMessage
+export default ErrorMessage;
