@@ -7,8 +7,8 @@ import Membership from "./pages/Membership";
 import AddTour from "./pages/AddTour";
 import Navbar from "./shared/UIElemets/Navbar";
 import TourDetails from "./pages/TourDetails";
-import ErrorMessage from "./pages/ErrorMessage";
 import ToursList from "./pages/ToursList";
+import ErrorPage from "./pages/ErrorPage";
 
 const App = () => {
   return (
@@ -37,7 +37,7 @@ const App = () => {
           <AddTour />
         </Route>
         <Route path="*" exact>
-          <h1>NEMA</h1>
+          <ErrorPage />
         </Route>
       </Switch>
     </Router>
