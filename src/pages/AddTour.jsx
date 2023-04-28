@@ -35,7 +35,6 @@ const AddTour = () => {
     setEnteredCond("");
     setEnteredTech("");
     setEnteredPrice("");
-
   };
 
   return (
@@ -67,7 +66,6 @@ const AddTour = () => {
           type="date"
           className="p-2 my-2 border w-[50%] rounded-md border-gray-400"
         />
- 
       </div>
       <textarea
         onChange={(e) => setEnteredDescription(e.target.value)}
