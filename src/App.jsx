@@ -36,7 +36,7 @@ const App = () => {
         <Route path="/add-tour">
           <AddTour />
         </Route>
-        <Route path="*" exact>
+        <Route path="*" >
           <ErrorPage />
         </Route>
       </Switch>
