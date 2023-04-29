@@ -13,7 +13,7 @@ const AddTour = () => {
   const [enteredDate, setEnteredDate] = useState("");
 
   const history = useHistory();
-
+  
   const submitTourHandler = async (e) => {
     e.preventDefault();
 
@@ -76,38 +76,39 @@ const AddTour = () => {
       <div className="flex justify-around">
         <select
           onChange={(e) => setEnteredCond(e.target.value)}
-          defaultValue={enteredCond}
+          value={enteredCond}
+          defaultValue=""
           type="text"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
-          <option value="" disabled selected hidden>
+          <option disabled selected hidden>
             Kondiciona zahtjevnost
           </option>
-          <option>K1</option>
-          <option>K2</option>
-          <option>K3</option>
-          <option>K4</option>
+          <option value="1">K1</option>
+          <option value="2">K2</option>
+          <option value="3">K3</option>
+          <option value="4">K4</option>
         </select>
         <select
           onChange={(e) => setEnteredTech(e.target.value)}
           value={enteredTech}
-          placeholder="Tehnička zahtjevnost"
+          defaultValue=""
           type="text"
           className="text-gray-400 p-2 my-2 border  w-[50%] border-gray-400"
         >
-          <option value="" disabled selected hidden>
+          <option disabled selected hidden>
             Tehnička zahtjevnost
           </option>
-          <option>T1</option>
-          <option>T2</option>
-          <option>T3</option>
-          <option>T4</option>
+          <option value="1">T1</option>
+          <option value="2">T2</option>
+          <option value="3">T3</option>
+          <option value="4">T4</option>
         </select>
       </div>
       <select className="p-2 my-2 border text-gray-400 border-gray-400">
-        <option value="" disabled selected hidden>
+        {/* <option value="" disabled selected hidden>
           Odaber vodiča
-        </option>
+        </option> */}
         {/* Treba se napraviti GET request firebasu i loopat krot već zadane vodiče */}
         <option>Emin</option>
       </select>

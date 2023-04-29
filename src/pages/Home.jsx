@@ -1,11 +1,12 @@
 import React from 'react';
-import Image from '../Components/Image';
-import Onama from '../Components/Onama';
-import Vodici from '../Components/Vodici';
+import Image from '../components/Image';
+import Onama from '../components/Onama';
+import Vodici from '../components/Vodici';
+
 
 const Home = () => {
   return (
-    <div className="wrapper">
+    <div className="flex flex-col">
         <Image/>
         <Onama/>
         <Vodici/>
