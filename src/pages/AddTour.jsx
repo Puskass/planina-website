@@ -36,7 +36,6 @@ const AddTour = () => {
     setEnteredTech("");
     setEnteredPrice("");
 
-    history.push("/tours");
   };
 
   return (
