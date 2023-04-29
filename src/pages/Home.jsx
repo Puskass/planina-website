@@ -3,9 +3,10 @@ import Image from '../Components/Image';
 import Onama from '../Components/Onama';
 import Vodici from '../Components/Vodici';
 
+
 const Home = () => {
   return (
-    <div className="wrapper">
+    <div className="flex flex-col">
         <Image/>
         <Onama/>
         <Vodici/>
