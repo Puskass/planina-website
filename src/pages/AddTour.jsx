@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Button from "../shared/UIElemets/Button";
 import { useHistory } from "react-router-dom";
@@ -12,7 +12,6 @@ const AddTour = () => {
   const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
-  const [guides, setGuides] = useState([]);
   const history = useHistory();
 
   const submitTourHandler = async (e) => {
