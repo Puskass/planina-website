@@ -11,9 +11,10 @@ const AddTour = () => {
   const [enteredTech, setEnteredTech] = useState("");
   const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [location, setLocation] = useState("");
 
   const history = useHistory();
-  
+
   const submitTourHandler = async (e) => {
     e.preventDefault();
 
@@ -25,6 +26,7 @@ const AddTour = () => {
       condition: enteredCond,
       technique: enteredTech,
       price: enteredPrice,
+      location: location,
     });
 
     history.push("/tours");
@@ -35,6 +37,7 @@ const AddTour = () => {
     setEnteredCond("");
     setEnteredTech("");
     setEnteredPrice("");
+    setLocation("");
   };
 
   return (
@@ -47,7 +50,8 @@ const AddTour = () => {
       <input
         onChange={(e) => setEnteredImageURL(e.target.value)}
         value={enteredImageURL}
-        placeholder="Unesi URL slike"
+        // required
+        placeholder="Tour URL Image "
         type="url"
         className="p-2 my-2 border rounded-md border-gray-400"
       />
@@ -55,14 +59,16 @@ const AddTour = () => {
         <input
           onChange={(e) => setEnteredName(e.target.value)}
           value={enteredName}
-          placeholder="Naziv ture"
+          required
+          placeholder="Tour Name"
           type="text"
           className="p-2 my-2 border w-[50%] mr-4 rounded-md border-gray-400"
         />
         <input
           onChange={(e) => setEnteredDate(e.target.value)}
           value={enteredDate}
-          placeholder="Datum ture"
+          // required
+          placeholder="Tour Date"
           type="date"
           className="p-2 my-2 border w-[50%] rounded-md border-gray-400"
         />
@@ -70,55 +76,70 @@ const AddTour = () => {
       <textarea
         onChange={(e) => setEnteredDescription(e.target.value)}
         value={enteredDescription}
-        placeholder="Opis ture"
+        // required
+        placeholder="Description of the Tour"
         className="p-2 my-2 h-[6rem] border rounded-md border-gray-400 overflow-auto "
       ></textarea>
+
+      {/* FITNESS and CONDITION field */}
       <div className="flex justify-around">
         <select
           onChange={(e) => setEnteredCond(e.target.value)}
           value={enteredCond}
-          defaultValue=""
+          // required
           type="text"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
-          <option disabled selected hidden>
-            Kondiciona zahtjevnost
+          <option selected hidden>
+            Fitness requirement
           </option>
-          <option value="1">K1</option>
-          <option value="2">K2</option>
-          <option value="3">K3</option>
-          <option value="4">K4</option>
+          <option value="K1">K1</option>
+          <option value="K2">K2</option>
+          <option value="K3">K3</option>
+          <option value="K4">K4</option>
         </select>
         <select
           onChange={(e) => setEnteredTech(e.target.value)}
           value={enteredTech}
-          defaultValue=""
+          // required
           type="text"
-          className="text-gray-400 p-2 my-2 border  w-[50%] border-gray-400"
+          className="text-gray-400 p-2 my-2 border w-[50%] border-gray-400"
         >
-          <option disabled selected hidden>
-            Tehnička zahtjevnost
+          <option selected hidden>
+            Technical requirement
           </option>
-          <option value="1">T1</option>
-          <option value="2">T2</option>
-          <option value="3">T3</option>
-          <option value="4">T4</option>
+          <option value="T1">T1</option>
+          <option value="T2">T2</option>
+          <option value="T3">T3</option>
+          <option value="T4">T4</option>
         </select>
       </div>
       <select className="p-2 my-2 border text-gray-400 border-gray-400">
         {/* <option value="" disabled selected hidden>
-          Odaber vodiča
+          Select Guide
         </option> */}
         {/* Treba se napraviti GET request firebasu i loopat krot već zadane vodiče */}
         <option>Emin</option>
       </select>
-      <input
-        onChange={(e) => setEnteredPrice(e.target.value)}
-        value={enteredPrice}
-        placeholder="Unesi cijenu"
-        type="text"
-        className="p-2 my-2 border rounded-md border-gray-400"
-      />
+      {/* PRICE and LOCATION */}
+      <div className="flex">
+        <input
+          onChange={(e) => setEnteredPrice(e.target.value)}
+          value={enteredPrice}
+          // required
+          placeholder="Price"
+          type="number"
+          className="p-2 my-2 border w-[50%] rounded-md border-gray-400"
+        />
+        <input
+          type="text"
+          placeholder="Location"
+          onChange={(e) => setLocation(e.target.value)}
+          value={location}
+          className="p-2 my-2 border w-[50%] ml-4 rounded-md border-gray-400"
+        />
+      </div>
+
       <div className="flex justify-center my-2 ">
         <Button type="submit">Add tour</Button>
       </div>

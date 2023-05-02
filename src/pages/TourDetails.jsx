@@ -21,6 +21,8 @@ const TourDetails = () => {
   }, [params.id]);
 
   return (
+    // Koristit ću useEffect da uzmem podatke sa weatherAPI
+    // Samo u URL OWA ubacim /{tour.location}
     <>
       {loading ? (
         <div className="max-w-lg m-auto py-4">
@@ -28,6 +30,14 @@ const TourDetails = () => {
           <h1 className="font-semibold text-2xl py-2"> {tour.name} </h1>
           <div className="font-medium"> {tour.date} </div>
           {/* GET request weather API-u */}
+          <div>
+            <div>weather icon</div>
+            <div>trenutna temp</div>
+            <div>
+              <span>temp min</span>
+              <span>temp max</span>
+            </div>
+          </div>
           <h2 className="font-semibold text-xl py-2">Tour description</h2>
           <p className="text-lg"> {tour.description} </p>
           <h2 className="font-semibold text-xl py-2">Demanding</h2>

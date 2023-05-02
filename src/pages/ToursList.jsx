@@ -34,7 +34,7 @@ const ToursList = () => {
       <>
         {loading ? (
           tours.map((tour) => (
-            <div key={tour.id} className="max-w-lg mx-auto mt-4">
+            <div key={tour.id} className="max-w-lg mx-auto py-4">
               <img src={tour.imageURL} alt="Mountain" />
               <div className="flex items-center justify-between ">
                 <div>
