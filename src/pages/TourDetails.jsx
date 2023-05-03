@@ -8,21 +8,26 @@ const TourDetails = () => {
   const params = useParams();
   const [tour, setTour] = useState({});
   const [loading, setLoading] = useState(false);
+  const [location, setLocation] = useState("");
+  const [weather, setWeather] = useState(null);
 
   useEffect(() => {
     const doRequest = async () => {
-      const { data } = await axios.get(
+      setLoading(true);
+      const { data: tour } = await axios.get(
         `${process.env.REACT_APP_FIREBASE_URL}/tours/${params.id}.json`
       );
-      setTour(data);
-      setLoading(true);
+      // const {data: weather} = await axios.get(
+      //       `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      //     );
+      setTour(tour);
+      // setLocation(weather.location);
+      console.log(tour);
     };
     doRequest();
   }, [params.id]);
 
   return (
-    // Koristit ću useEffect da uzmem podatke sa weatherAPI
-    // Samo u URL OWA ubacim /{tour.location}
     <>
       {loading ? (
         <div className="max-w-lg m-auto py-4">
@@ -31,12 +36,15 @@ const TourDetails = () => {
           <div className="font-medium"> {tour.date} </div>
           {/* GET request weather API-u */}
           <div>
-            <div>weather icon</div>
-            <div>trenutna temp</div>
-            <div>
-              <span>temp min</span>
-              <span>temp max</span>
-            </div>
+            <h2>Weather in {location} </h2>
+            {weather && (
+              <div>
+                <div>{weather.main.description}</div>
+                <div>trenutna temp: {weather.main.temp} °C</div>
+                <span>Min {weather.main.temp_min} °C </span>
+                <span>Max {weather.main.temp_max} °C</span>
+              </div>
+            )}
           </div>
           <h2 className="font-semibold text-xl py-2">Tour description</h2>
           <p className="text-lg"> {tour.description} </p>

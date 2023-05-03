@@ -10,11 +10,11 @@ const ToursList = () => {
 
   useEffect(() => {
     const doRequest = async () => {
+      setLoading(true);
       const { data: tours } = await axios.get(
         `${process.env.REACT_APP_FIREBASE_URL}/tours.json`
       );
 
-      setLoading(true);
       const transformedTours = [];
 
       for (const key in tours) {
@@ -42,9 +42,9 @@ const ToursList = () => {
                   <span> {tour.date} </span>
                 </div>
                 <div>
-                  <Button>
-                    <Link to={`/tours/${tour.id}`}>Read more</Link>
-                  </Button>
+                  <Link to={`/tours/${tour.id}`}>
+                    <Button>Read more</Button>
+                  </Link>
                 </div>
               </div>
             </div>
