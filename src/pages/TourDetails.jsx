@@ -36,7 +36,7 @@ const TourDetails = () => {
           </span>
           <h2 className="font-semibold text-xl py-2">Guides</h2>
           {/* Dodati vodice */}
-          <h2 className="font-semibold text-xl py-2">Price</h2>
+          <h2 className="font-semibold text-xl py-2">Price(in $)</h2>
           <span className="text-lg font-medium "> {tour.price}$ </span>
           <div>
             <h2 className="font-semibold text-xl py-2">
