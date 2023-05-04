@@ -43,7 +43,7 @@ const TourDetails = () => {
             <h2>Weather in {location && tour.location} </h2>
             {weather && (
               <div>
-                <div> {weather.weather[3]} </div>
+                <div> </div>
                 <div>trenutna temp: {weather.main.temp} °C</div>
                 <span>Min {weather.main.temp_min} °C </span>
                 <span>Max {weather.main.temp_max} °C</span>
