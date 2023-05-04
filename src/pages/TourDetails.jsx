@@ -16,13 +16,15 @@ const TourDetails = () => {
       setLoading(true);
       const { data: tour } = await axios.get(
         `${process.env.REACT_APP_FIREBASE_URL}/tours/${params.id}.json`
-      );
-      // const {data: weather} = await axios.get(
-      //       `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
-      //     );
-      setTour(tour);
-      // setLocation(weather.location);
+        );
+        setTour(tour);
+      const {data: weather} = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+          );
+      setLocation(weather.location);
       console.log(tour);
+      console.log(tour.location);
+      console.log(weather)
     };
     doRequest();
   }, [params.id]);
