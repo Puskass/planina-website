@@ -2,19 +2,19 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Button from "../shared/UIElemets/Button";
 import { Link } from "react-router-dom";
-import Loading from "../components/Loading";
+import LoadingSpinner from "../components/Loading";
 
 const ToursList = () => {
   const [tours, setTours] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const doRequest = async () => {
-      setLoading(true);
+      setIsLoading(true);
       const { data: tours } = await axios.get(
         `${process.env.REACT_APP_FIREBASE_URL}/tours.json`
       );
-
+      setIsLoading(false);
       const transformedTours = [];
 
       for (const key in tours) {
@@ -32,7 +32,8 @@ const ToursList = () => {
   return (
     <div className="py-6">
       <>
-        {loading ? (
+        {isLoading && <LoadingSpinner />}
+        {!isLoading &&
           tours.map((tour) => (
             <div key={tour.id} className="max-w-lg mx-auto py-4">
               <img src={tour.imageURL} alt="Mountain" />
@@ -48,10 +49,7 @@ const ToursList = () => {
                 </div>
               </div>
             </div>
-          ))
-        ) : (
-          <Loading />
-        )}
+          ))}
       </>
     </div>
   );
