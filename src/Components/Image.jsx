@@ -11,14 +11,14 @@ const Image = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center absolute w-[100%] h-[44rem]">
+      <div className="flex justify-center items-center absolute max-w-full h-auto">
         <Button className="w-[14rem] h-[3rem]" onClick={handleFindTour}><h1>Find tour</h1>
         </Button>
       </div>
       <img
         src="https://images.hdqwalls.com/download/colorado-mountains-4k-2560x1440.jpg"
         alt="Planina babemi"
-        className="flex w-[100vw] h-[44rem]"
+        className="flex max-w-full h-auto"
       />
     </div>
   );
