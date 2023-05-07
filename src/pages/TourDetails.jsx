@@ -29,7 +29,10 @@ const TourDetails = () => {
       const { data: weather } = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${tour.location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       );
-
+      const { data: comment } = await axios.get(
+        `${process.env.REACT_APP_FIREBASE_URL}/comments.json`
+      );
+      console.log(comment);
       setTour(tour);
       setWeather(weather);
       setIsLoading(false);

@@ -7,12 +7,13 @@ const Image = () => {
 
   const handleFindTour = () => {
     history.push("/tours");
-  }
+  };
 
   return (
     <div>
       <div className="flex justify-center items-center absolute w-[100%] h-[44rem]">
-        <Button className="w-[14rem] h-[3rem]" onClick={handleFindTour}><h1>Find tour</h1>
+        <Button className="w-[14rem] h-[3rem]" onClick={handleFindTour}>
+          <h1>Find tour</h1>
         </Button>
       </div>
       <img

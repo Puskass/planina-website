@@ -14,7 +14,6 @@ const ToursList = () => {
       const { data: tours } = await axios.get(
         `${process.env.REACT_APP_FIREBASE_URL}/tours.json`
       );
-      setIsLoading(false);
       const transformedTours = [];
 
       for (const key in tours) {
@@ -25,6 +24,7 @@ const ToursList = () => {
           date: tours[key].date,
         });
       }
+      setIsLoading(false);
       setTours(transformedTours);
     };
     doRequest();

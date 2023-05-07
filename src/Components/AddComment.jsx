@@ -28,9 +28,11 @@ const AddCommentForm = ({ onCommentPost }) => {
       <input
         onChange={(e) => setEnteredComment(e.target.value)}
         value={enteredComment}
+        required
+        maxLength={50}
+        type="text"
         placeholder="Comment..."
         className="w-[80%] p-2 my-2 border rounded-md border-gray-400"
-        type="text"
       ></input>
 
       <Button type="submit" className={`hover:bg-purple-500`}>

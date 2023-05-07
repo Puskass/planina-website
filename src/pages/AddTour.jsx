@@ -44,8 +44,8 @@ const AddTour = () => {
     const min = 1;
     const max = 100000;
     const value = Math.max(min, Math.min(max, Number(e.target.value)));
-    setEnteredPrice(value)
-  }
+    setEnteredPrice(value);
+  };
   return (
     <form
       onSubmit={submitTourHandler}
@@ -96,6 +96,7 @@ const AddTour = () => {
           value={enteredCond}
           required
           type="text"
+          defaultValue="Fitness requirement"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
           <option selected hidden>
