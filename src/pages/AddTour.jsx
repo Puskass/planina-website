@@ -40,6 +40,12 @@ const AddTour = () => {
     setLocation("");
   };
 
+  const handleChange = (e) => {
+    const min = 1;
+    const max = 100000;
+    const value = Math.max(min, Math.min(max, Number(e.target.value)));
+    setEnteredPrice(value)
+  }
   return (
     <form
       onSubmit={submitTourHandler}
@@ -50,7 +56,7 @@ const AddTour = () => {
       <input
         onChange={(e) => setEnteredImageURL(e.target.value)}
         value={enteredImageURL}
-        // required
+        required
         placeholder="Tour URL Image "
         type="url"
         className="p-2 my-2 border rounded-md border-gray-400"
@@ -60,6 +66,7 @@ const AddTour = () => {
           onChange={(e) => setEnteredName(e.target.value)}
           value={enteredName}
           required
+          maxLength={30}
           placeholder="Tour Name"
           type="text"
           className="p-2 my-2 border w-[50%] mr-4 rounded-md border-gray-400"
@@ -67,7 +74,7 @@ const AddTour = () => {
         <input
           onChange={(e) => setEnteredDate(e.target.value)}
           value={enteredDate}
-          // required
+          required
           placeholder="Tour Date"
           type="date"
           className="p-2 my-2 border w-[50%] rounded-md border-gray-400"
@@ -76,7 +83,8 @@ const AddTour = () => {
       <textarea
         onChange={(e) => setEnteredDescription(e.target.value)}
         value={enteredDescription}
-        // required
+        required
+        maxLength={300}
         placeholder="Description of the Tour"
         className="p-2 my-2 h-[6rem] border rounded-md border-gray-400 overflow-auto "
       ></textarea>
@@ -86,7 +94,7 @@ const AddTour = () => {
         <select
           onChange={(e) => setEnteredCond(e.target.value)}
           value={enteredCond}
-          // required
+          required
           type="text"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
@@ -101,7 +109,7 @@ const AddTour = () => {
         <select
           onChange={(e) => setEnteredTech(e.target.value)}
           value={enteredTech}
-          // required
+          required
           type="text"
           className="text-gray-400 p-2 my-2 border w-[50%] border-gray-400"
         >
@@ -124,18 +132,19 @@ const AddTour = () => {
       {/* PRICE and LOCATION */}
       <div className="flex">
         <input
-          onChange={(e) => setEnteredPrice(e.target.value)}
+          onChange={handleChange}
           value={enteredPrice}
-          // required
-          placeholder="Price"
+          required
+          placeholder="Price in $"
           type="number"
           className="p-2 my-2 border w-[50%] rounded-md border-gray-400"
         />
         <input
           type="text"
-          placeholder="Location"
+          placeholder="Nearest City to your Destination"
           onChange={(e) => setLocation(e.target.value)}
           value={location}
+          required
           className="p-2 my-2 border w-[50%] ml-4 rounded-md border-gray-400"
         />
       </div>
