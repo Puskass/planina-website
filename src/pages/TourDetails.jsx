@@ -12,23 +12,24 @@ const TourDetails = () => {
   const [weather, setWeather] = useState(null);
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const onCommentPost = (comment) => {
     setComments((prevState) => {
       return [...prevState, comment];
     });
   };
-  
+
   useEffect(() => {
     const doRequest = async () => {
       setIsLoading(true);
+
       const { data: tour } = await axios.get(
         `${process.env.REACT_APP_FIREBASE_URL}/tours/${params.id}.json`
       );
-
       const { data: weather } = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${tour.location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       );
+
       setTour(tour);
       setWeather(weather);
       setIsLoading(false);
@@ -82,7 +83,7 @@ const TourDetails = () => {
               Comment/Ask us a questuion
             </h2>
             <div className="px-4 ">
-              <AddCommentForm onSubmit={onCommentPost} />
+              <AddCommentForm onCommentPost={onCommentPost} />
             </div>
             <div>
               <CommentList comments={comments} />

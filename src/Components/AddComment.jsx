@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTree } from "@fortawesome/free-solid-svg-icons";
 import Button from "../shared/UIElemets/Button";
+import axios from "axios";
 
 const AddCommentForm = ({ onCommentPost }) => {
   const [enteredComment, setEnteredComment] = useState("");
-  
-  const addCommentHandler = (e) => {
+
+  const addCommentHandler = async (e) => {
     e.preventDefault();
     const comment = {
       id: Math.random().toString(),
-      text: enteredComment,
+      comment: enteredComment,
     };
+    await axios.post(`${process.env.REACT_APP_FIREBASE_URL}/comments.json`, {
+      comment: enteredComment,
+    });
     onCommentPost(comment);
     setEnteredComment("");
   };
+
   return (
     <form
       onSubmit={addCommentHandler}
@@ -28,7 +33,7 @@ const AddCommentForm = ({ onCommentPost }) => {
         type="text"
       ></input>
 
-      <Button className={`hover:bg-purple-500`}>
+      <Button type="submit" className={`hover:bg-purple-500`}>
         <FontAwesomeIcon icon={faTree} />
       </Button>
     </form>
