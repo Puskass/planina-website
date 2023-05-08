@@ -6,7 +6,7 @@ import Vodici from '../components/Vodici';
 
 const Home = () => {
   return (
-    <div className="flex flex-col">
+    <div>
         <Image/>
         <Onama/>
         <Vodici/>

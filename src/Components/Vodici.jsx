@@ -1,15 +1,19 @@
 import React from "react";
 
 const Vodici = () => {
-    return (
-      <div className="block">
-        <div className="absolute w-full h-[70%] flex justify-center items-center;">
-          <div className="absolute not-italic font-normal text-5xl leading-[58px] text-black left-16 top-16">
-            <h1>Naši vodiči</h1>
-          </div>
-        </div>
-      </div>
-    );
-  };
+  return (
+    <div className="relative">
+
+    <h1 className="absolute font-normal text-5xl leading-tight text-black left-16 mt-3rem">
+      Our Guides
+    </h1>
+
+    <div className="w-[85rem] h-[25rem] m-25">
+
+    </div>
+ 
+  </div>
+  );
+};
 
 export default Vodici;
