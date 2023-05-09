@@ -19,7 +19,7 @@ const Image = () => {
       <img
         src="https://images.hdqwalls.com/download/colorado-mountains-4k-2560x1440.jpg"
         alt="Planina babemi"
-        className="max-w-full h-auto"
+        className="w-screen h-screen"
       />
     </div>
   );
