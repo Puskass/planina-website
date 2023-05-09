@@ -10,13 +10,8 @@ const Image = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <div>
-      <div className="flex justify-center items-center absolute w-[100%] h-[44rem]">
-=======
     <div className="relative">
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-full h-auto">
->>>>>>> 5a4f63514647ce684eddf0ad448ac47b180d8886
         <Button className="w-[14rem] h-[3rem]" onClick={handleFindTour}>
           <h1>Find tour</h1>
         </Button>
