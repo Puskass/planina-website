@@ -10,9 +10,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", async (req, res) => {
-  getDB().collection("guides").insertOne({ test: "test" });
-});
 // Routing
 app.use(tourRoutes);
 

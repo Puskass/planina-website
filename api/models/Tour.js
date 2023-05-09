@@ -1,0 +1,41 @@
+// Reqs
+const { getDB } = require("../util/database");
+const { ObjectId } = require("bson");
+
+module.exports = class Tour {
+  constructor(
+    tourId,
+    guideId,
+    name,
+    imgUrl,
+    date,
+    description,
+    condition,
+    technique,
+    price
+  ) {
+    this.tourId = new ObjectId(tourId);
+    this.guideId = guideId;
+    this.name = name;
+    this.imgUrl = imgUrl;
+    this.date = date;
+    this.description = description;
+    this.condition = condition;
+    this.technique = technique;
+    this.price = price;
+  }
+
+  async save() {
+    return await getDB().collection("tours").insertOne(this);
+  }
+
+  static async fetchAll() {
+    return await getDB().collection("tours").find().toArray();
+  }
+
+  static async findById(id) {
+    return await getDB()
+      .collection("tours")
+      .findOne({ _id: new ObjectId(id) });
+  }
+};
