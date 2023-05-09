@@ -1,16 +1,13 @@
-/*// Requirements
-// mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.12cbbzj.mongodb.net/?retryWrites=true&w=majority
 const mongodb = require("mongodb");
+const keys = require("../config/keys");
 const MongoClient = mongodb.MongoClient;
 
 let database;
 
 async function connect() {
-  const client = await MongoClient.connect(
-    `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0.12cbbzj.mongodb.net/?retryWrites=true&w=majority`
-  );
+  const client = await MongoClient.connect(keys.mongoURI);
   console.log("Successfully connected to MongoDB.");
-  database = client.db("onlineshop");
+  database = client.db("mountaineering");
 }
 
 function getDB() {
@@ -24,4 +21,3 @@ module.exports = {
   connect,
   getDB,
 };
-*/
