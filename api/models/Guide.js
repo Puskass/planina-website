@@ -1,10 +1,8 @@
-// Reqs
 const { getDB } = require("../util/database");
 const { ObjectId } = require("bson");
 
 module.exports = class Guide {
-  constructor(guideId, name, description, imgUrl) {
-    this.guideId = new ObjectId(guideId);
+  constructor(name, description, imgUrl) {
     this.name = name;
     this.description = description;
     this.imgUrl = imgUrl;

@@ -3,16 +3,43 @@ const express = require("express");
 const Tour = require("../models/Tour");
 const Guide = require("../models/Guide");
 
-exports.getTours = async (request, response) => {
-  const tours = await Tour.fetchAll();
+exports.postTour = async (req, res) => {
+  const {
+    name,
+    imgUrl,
+    date,
+    description,
+    condition,
+    technique,
+    price,
+    guideId,
+  } = req.body;
 
-  response.send(tours);
+  const tour = new Tour(
+    name,
+    imgUrl,
+    date,
+    description,
+    condition,
+    technique,
+    price,
+    guideId
+  );
+  const tourDoc = await tour.save();
+  res.send(tourDoc);
 };
 
-exports.getTour = async (request, response) => {
-  const { id } = request.params;
+exports.getTours = async (req, res) => {
+  const toursDocs = await Tour.fetchAll();
 
-  const tour = await Tour.findById(id);
+  
+  res.send(toursDocs);
+};
 
-  response.send(tour);
+exports.getTour = async (req, res) => {
+  const { id } = req.params;
+
+  const toursDoc = await Tour.findById(id);
+
+  res.send(toursDoc);
 };

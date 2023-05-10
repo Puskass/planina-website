@@ -4,18 +4,15 @@ const { ObjectId } = require("bson");
 
 module.exports = class Tour {
   constructor(
-    tourId,
-    guideId,
     name,
     imgUrl,
     date,
     description,
     condition,
     technique,
-    price
+    price,
+    guideId  
   ) {
-    this.tourId = new ObjectId(tourId);
-    this.guideId = guideId;
     this.name = name;
     this.imgUrl = imgUrl;
     this.date = date;
@@ -23,6 +20,7 @@ module.exports = class Tour {
     this.condition = condition;
     this.technique = technique;
     this.price = price;
+    this.guideId = new ObjectId(guideId);
   }
 
   async save() {
