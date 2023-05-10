@@ -6,7 +6,7 @@ const {
   postGuide,
   getGuide,
   getGuides,
-} = require("../controllers/guides-controllers");
+} = require("../controllers/guides.controllers");
 
 router.post("/guide", postGuide);
 router.get("/guides", getGuides);

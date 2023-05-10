@@ -1,6 +1,3 @@
-// Reqs
-const express = require("express");
-const Tour = require("../models/Tour");
 const Guide = require("../models/Guide");
 
 exports.postGuide = async (req, res) => {
@@ -8,7 +5,6 @@ exports.postGuide = async (req, res) => {
 
   const guide = new Guide(name, imgUrl, description);
   const guideDoc = await guide.save();
-  console.log(guideDoc);
   res.send(guideDoc);
 };
 

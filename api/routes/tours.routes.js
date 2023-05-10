@@ -5,7 +5,7 @@ const {
   getTours,
   getTour,
   postTour,
-} = require("../controllers/tours-controllers");
+} = require("../controllers/tours.controllers");
 
 router.post("/tour", postTour);
 router.get("/tours", getTours);

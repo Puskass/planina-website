@@ -1,7 +1,4 @@
-// Reqs
-const express = require("express");
 const Tour = require("../models/Tour");
-const Guide = require("../models/Guide");
 
 exports.postTour = async (req, res) => {
   const {
