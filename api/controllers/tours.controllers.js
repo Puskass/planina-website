@@ -3,6 +3,7 @@ const Tour = require("../models/Tour");
 exports.postTour = async (req, res) => {
   const {
     name,
+    location,
     imgUrl,
     date,
     description,
@@ -14,6 +15,7 @@ exports.postTour = async (req, res) => {
 
   const tour = new Tour(
     name,
+    location,
     imgUrl,
     date,
     description,
