@@ -18,34 +18,34 @@ const AddTour = () => {
   const submitTourHandler = async (e) => {
     e.preventDefault();
 
-    await axios.post(`${process.env.REACT_APP_FIREBASE_URL}/tours.json`, {
-      imageURL: enteredImageURL,
+    await axios.post(`http://localhost:5000/tour`, {
       name: enteredName,
-      description: enteredDescription,
+      location: location,
+      imgURL: enteredImageURL,
       date: enteredDate,
+      description: enteredDescription,
       condition: enteredCond,
       technique: enteredTech,
       price: enteredPrice,
-      location: location,
     });
 
     history.push("/tours");
-    setEnteredImageURL("");
-    setEnteredName("");
-    setEnteredDate("");
-    setEnteredDescription("");
-    setEnteredCond("");
-    setEnteredTech("");
-    setEnteredPrice("");
-    setLocation("");
+    // setEnteredImageURL("");
+    // setEnteredName("");
+    // setEnteredDate("");
+    // setEnteredDescription("");
+    // setEnteredCond("");
+    // setEnteredTech("");
+    // setEnteredPrice("");
+    // setLocation("");
   };
 
   const handleChange = (e) => {
     const min = 1;
     const max = 100000;
     const value = Math.max(min, Math.min(max, Number(e.target.value)));
-    setEnteredPrice(value)
-  }
+    setEnteredPrice(value);
+  };
   return (
     <form
       onSubmit={submitTourHandler}
