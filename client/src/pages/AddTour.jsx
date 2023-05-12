@@ -30,14 +30,14 @@ const AddTour = () => {
     });
 
     history.push("/tours");
-    // setEnteredImageURL("");
-    // setEnteredName("");
-    // setEnteredDate("");
-    // setEnteredDescription("");
-    // setEnteredCond("");
-    // setEnteredTech("");
-    // setEnteredPrice("");
-    // setLocation("");
+    setEnteredImageURL("");
+    setEnteredName("");
+    setEnteredDate("");
+    setEnteredDescription("");
+    setEnteredCond("");
+    setEnteredTech("");
+    setEnteredPrice("");
+    setLocation("");
   };
 
   const handleChange = (e) => {
@@ -58,7 +58,7 @@ const AddTour = () => {
         value={enteredImageURL}
         required
         placeholder="Tour URL Image "
-        type="url"
+        type="text"
         className="p-2 my-2 border rounded-md border-gray-400"
       />
       <div className="flex justify-around">
@@ -145,6 +145,7 @@ const AddTour = () => {
           onChange={(e) => setLocation(e.target.value)}
           value={location}
           required
+          maxLength={30}
           className="p-2 my-2 border w-[50%] ml-4 rounded-md border-gray-400"
         />
       </div>
