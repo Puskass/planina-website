@@ -18,15 +18,15 @@ const AddTour = () => {
   const submitTourHandler = async (e) => {
     e.preventDefault();
 
-    await axios.post(`${process.env.REACT_APP_FIREBASE_URL}/tours.json`, {
-      imageURL: enteredImageURL,
+    await axios.post(`http://localhost:5000/tour`, {
       name: enteredName,
-      description: enteredDescription,
+      location: location,
+      imgURL: enteredImageURL,
       date: enteredDate,
+      description: enteredDescription,
       condition: enteredCond,
       technique: enteredTech,
       price: enteredPrice,
-      location: location,
     });
 
     history.push("/tours");
@@ -44,8 +44,8 @@ const AddTour = () => {
     const min = 1;
     const max = 100000;
     const value = Math.max(min, Math.min(max, Number(e.target.value)));
-    setEnteredPrice(value)
-  }
+    setEnteredPrice(value);
+  };
   return (
     <form
       onSubmit={submitTourHandler}
@@ -58,7 +58,7 @@ const AddTour = () => {
         value={enteredImageURL}
         required
         placeholder="Tour URL Image "
-        type="url"
+        type="text"
         className="p-2 my-2 border rounded-md border-gray-400"
       />
       <div className="flex justify-around">
@@ -145,6 +145,7 @@ const AddTour = () => {
           onChange={(e) => setLocation(e.target.value)}
           value={location}
           required
+          maxLength={30}
           className="p-2 my-2 border w-[50%] ml-4 rounded-md border-gray-400"
         />
       </div>
