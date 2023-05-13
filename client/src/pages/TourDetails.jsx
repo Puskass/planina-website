@@ -24,18 +24,14 @@ const TourDetails = () => {
       setIsLoading(true);
 
       const { data: tour } = await axios.get(
-        `${process.env.REACT_APP_FIREBASE_URL}/tours/${params.id}.json`
+        `http://localhost:5000/tours/${params.id}`
       );
       const { data: weather } = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${tour.location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       );
-      const { data: comment } = await axios.get(
-        `${process.env.REACT_APP_FIREBASE_URL}/comments.json`
-      );
-      console.log(comment);
-      setTour(tour);
-      setWeather(weather);
       setIsLoading(false);
+      setWeather(weather);
+      setTour(tour);
     };
     doRequest();
   }, [params.id]);
@@ -45,7 +41,7 @@ const TourDetails = () => {
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <div className="max-w-lg m-auto py-4">
-          <img src={tour.imageURL} alt="Mountain" />
+          <img src={tour.imgUrl} alt="Mountain" />
 
           <h1 className="font-semibold text-2xl py-2"> {tour.name} </h1>
           <span className="font-medium"> {tour.date} </span>

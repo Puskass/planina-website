@@ -4,48 +4,48 @@ import Button from "../shared/UIElemets/Button";
 import { useHistory } from "react-router-dom";
 
 const AddTour = () => {
-  const [enteredName, setEnteredName] = useState("");
-  const [enteredDescription, setEnteredDescription] = useState("");
-  const [enteredImageURL, setEnteredImageURL] = useState("");
-  const [enteredCond, setEnteredCond] = useState("");
-  const [enteredTech, setEnteredTech] = useState("");
-  const [enteredPrice, setEnteredPrice] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
-  const [location, setLocation] = useState("");
+  const [formValues, setFormValues] = useState({
+    imgUrl: "",
+    name: "",
+    description: "",
+    date: "",
+    condition: "",
+    technique: "",
+    price: "",
+    location: "",
+  });
 
   const history = useHistory();
+  // Unused function
+  // const handleChange = (e) => {
+  //   const min = 1;
+  //   const max = 100000;
+  //   const value = Math.max(min, Math.min(max, Number(e.target.value)));
+  //   setFormValues({ ...formValues, price: value });
+  // };
 
   const submitTourHandler = async (e) => {
     e.preventDefault();
 
-    await axios.post(`${process.env.REACT_APP_FIREBASE_URL}/tours.json`, {
-      imageURL: enteredImageURL,
-      name: enteredName,
-      description: enteredDescription,
-      date: enteredDate,
-      condition: enteredCond,
-      technique: enteredTech,
-      price: enteredPrice,
-      location: location,
-    });
+    await axios.post(`http://localhost:5000/tour`, formValues);
 
     history.push("/tours");
-    setEnteredImageURL("");
-    setEnteredName("");
-    setEnteredDate("");
-    setEnteredDescription("");
-    setEnteredCond("");
-    setEnteredTech("");
-    setEnteredPrice("");
-    setLocation("");
+    setFormValues({
+      imgUrl: "",
+      name: "",
+      description: "",
+      date: "",
+      condition: "",
+      technique: "",
+      price: "",
+      location: "",
+    });
   };
 
-  const handleChange = (e) => {
-    const min = 1;
-    const max = 100000;
-    const value = Math.max(min, Math.min(max, Number(e.target.value)));
-    setEnteredPrice(value);
+  const handleInputChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
+
   return (
     <form
       onSubmit={submitTourHandler}
@@ -54,17 +54,19 @@ const AddTour = () => {
       <h1 className="font-semibold mb-3 text-2xl">Add a tour:</h1>
 
       <input
-        onChange={(e) => setEnteredImageURL(e.target.value)}
-        value={enteredImageURL}
+        onChange={handleInputChange}
+        value={formValues.imgUrl}
+        name="imgUrl"
         required
         placeholder="Tour URL Image "
-        type="url"
+        type="text"
         className="p-2 my-2 border rounded-md border-gray-400"
       />
       <div className="flex justify-around">
         <input
-          onChange={(e) => setEnteredName(e.target.value)}
-          value={enteredName}
+          onChange={handleInputChange}
+          value={formValues.name}
+          name="name"
           required
           maxLength={30}
           placeholder="Tour Name"
@@ -72,8 +74,9 @@ const AddTour = () => {
           className="p-2 my-2 border w-[50%] mr-4 rounded-md border-gray-400"
         />
         <input
-          onChange={(e) => setEnteredDate(e.target.value)}
-          value={enteredDate}
+          onChange={handleInputChange}
+          value={formValues.date}
+          name="date"
           required
           placeholder="Tour Date"
           type="date"
@@ -81,8 +84,9 @@ const AddTour = () => {
         />
       </div>
       <textarea
-        onChange={(e) => setEnteredDescription(e.target.value)}
-        value={enteredDescription}
+        onChange={handleInputChange}
+        value={formValues.description}
+        name="description"
         required
         maxLength={300}
         placeholder="Description of the Tour"
@@ -92,14 +96,15 @@ const AddTour = () => {
       {/* FITNESS and CONDITION field */}
       <div className="flex justify-around">
         <select
-          onChange={(e) => setEnteredCond(e.target.value)}
-          value={enteredCond}
+          onChange={handleInputChange}
+          value={formValues.condition}
+          name="condition"
           required
           type="text"
           defaultValue="Fitness requirement"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
-          <option selected hidden>
+          <option defaultValue hidden>
             Fitness requirement
           </option>
           <option value="K1">K1</option>
@@ -108,13 +113,14 @@ const AddTour = () => {
           <option value="K4">K4</option>
         </select>
         <select
-          onChange={(e) => setEnteredTech(e.target.value)}
-          value={enteredTech}
+          onChange={handleInputChange}
+          value={formValues.technique}
+          name="technique"
           required
           type="text"
           className="text-gray-400 p-2 my-2 border w-[50%] border-gray-400"
         >
-          <option selected hidden>
+          <option defaultValue hidden>
             Technical requirement
           </option>
           <option value="T1">T1</option>
@@ -133,8 +139,9 @@ const AddTour = () => {
       {/* PRICE and LOCATION */}
       <div className="flex">
         <input
-          onChange={handleChange}
-          value={enteredPrice}
+          onChange={handleInputChange}
+          value={formValues.price}
+          name="price"
           required
           placeholder="Price in $"
           type="number"
@@ -143,9 +150,11 @@ const AddTour = () => {
         <input
           type="text"
           placeholder="Nearest City to your Destination"
-          onChange={(e) => setLocation(e.target.value)}
-          value={location}
+          onChange={handleInputChange}
+          value={formValues.location}
+          name="location"
           required
+          maxLength={30}
           className="p-2 my-2 border w-[50%] ml-4 rounded-md border-gray-400"
         />
       </div>

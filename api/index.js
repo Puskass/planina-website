@@ -2,6 +2,9 @@
 const express = require("express");
 const cors = require("cors");
 const tourRoutes = require("./routes/tours.routes");
+const guideRoutes = require("./routes/guide.routes");
+const commentsRoutes = require("./routes/comments.routes");
+const { connect, getDB } = require("./util/database");
 
 // Server Setup
 const app = express();
@@ -11,15 +14,9 @@ app.use(express.json());
 
 // Routing
 app.use(tourRoutes);
+app.use(guideRoutes);
+app.use(commentsRoutes);
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+connect().then(() => {
+  app.listen(5000);
 });
-
-// DB Connection
-const { connect } = require("./util/database");
-/*connect().then(() => {
-  app.listen(5000, () => {
-    console.log("Server running on port 5000");
-  });
-});*/
