@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../shared/UIElemets/Button";
 import { useHistory } from "react-router-dom";
@@ -13,10 +13,11 @@ const AddTour = () => {
     technique: "",
     price: "",
     location: "",
+    guide: "",
   });
-
+  const [guides, setGuides] = useState([]);
   const history = useHistory();
-  // Unused function
+
   const handleChange = (e) => {
     const min = 1;
     const max = 100000;
@@ -39,12 +40,21 @@ const AddTour = () => {
       technique: "",
       price: "",
       location: "",
+      guide: "",
     });
   };
 
   const handleInputChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    const doRequest = async () => {
+      const { data: guides } = await axios.get(`http://localhost:5000/guides`);
+      setGuides(guides);
+    };
+    doRequest();
+  }, []);
 
   return (
     <form
@@ -130,13 +140,24 @@ const AddTour = () => {
           <option>T4</option>
         </select>
       </div>
-      <select className="p-2 my-2 border text-gray-400 border-gray-400">
-        {/* <option value="" disabled defaultValue hidden>
-          Select Guide ...Not Working
-        </option> */}
-        {/* Treba se napraviti GET request i loopat krot već zadane vodiče */}
-        <option>Emin</option>
+
+      {/* GUIDES */}
+      <select
+        onChange={handleInputChange}
+        value={formValues.guide}
+        name="guide"
+        required
+        type="text"
+        className="p-2 my-2 border text-gray-400 border-gray-400"
+      >
+        <option defaultValue hidden>
+          Select Guide
+        </option>
+        {guides.map((guide) => (
+          <option key={guide._id}>{guide.name}</option>
+        ))}
       </select>
+
       {/* PRICE and LOCATION */}
       <div className="flex">
         <input
