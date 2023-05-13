@@ -29,9 +29,13 @@ const TourDetails = () => {
       const { data: weather } = await axios.get(
         `https://api.openweathermap.org/data/2.5/weather?q=${tour.location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       );
+      const { data: comments } = await axios.get(
+        `http://localhost:5000/tours/${params.id}/comments`
+      );
       setIsLoading(false);
       setWeather(weather);
       setTour(tour);
+      setComments(comments);
     };
     doRequest();
   }, [params.id]);
@@ -86,6 +90,7 @@ const TourDetails = () => {
             </div>
             <div>
               <CommentList comments={comments} />
+              <div>{comments.comment}</div>
             </div>
           </div>
           <div className="text-center">
