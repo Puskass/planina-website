@@ -3,9 +3,9 @@ import Comment from "./Comment";
 
 const CommentList = ({ comments }) => {
   return (
-    <ul>
+    <ul className="max-w-lg">
       {comments.map((comment) => (
-        <Comment key={comment.comment} comment={comment} />
+        <Comment key={comment._id} comment={comment} />
       ))}
     </ul>
   );

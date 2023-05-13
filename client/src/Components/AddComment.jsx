@@ -27,18 +27,18 @@ const AddCommentForm = ({ onCommentPost }) => {
       onSubmit={addCommentHandler}
       className="flex items-center justify-evenly"
     >
-      <input
+      <textarea
         onChange={(e) => setEnteredComment(e.target.value)}
         value={enteredComment}
         required
-        maxLength={50}
+        maxLength={70}
         autoComplete="off"
         type="text"
         placeholder="Comment..."
-        className="w-[80%] p-2 my-2 border rounded-md border-gray-400"
-      ></input>
+        className="p-2 my-2 h-[3rem] w-screen border rounded-md border-gray-400 overflow-auto "
+      ></textarea>
 
-      <Button type="submit" className={`hover:bg-purple-500`}>
+      <Button type="submit">
         <FontAwesomeIcon icon={faTree} />
       </Button>
     </form>
