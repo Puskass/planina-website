@@ -14,6 +14,7 @@ const ToursList = () => {
       const { data: tours } = await axios.get("http://localhost:5000/tours");
       setIsLoading(false);
       setTours(tours);
+      console.log(tours);
     };
     doRequest();
   }, []);
@@ -23,7 +24,7 @@ const ToursList = () => {
         {isLoading && <LoadingSpinner />}
         {!isLoading &&
           tours.map((tour) => (
-            <div key={tour._id} className="max-w-lg mx-auto py-4">
+            <div key={tour.name} className="max-w-lg mx-auto py-4">
               <img src={tour.imgUrl} alt="Mountain" />
               <div className="flex items-center justify-between ">
                 <div>
