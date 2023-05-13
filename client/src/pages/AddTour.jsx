@@ -13,7 +13,7 @@ const AddTour = () => {
     technique: "",
     price: "",
     location: "",
-    guide: "",
+    guideId: "",
   });
   const [guides, setGuides] = useState([]);
   const history = useHistory();
@@ -40,7 +40,7 @@ const AddTour = () => {
       technique: "",
       price: "",
       location: "",
-      guide: "",
+      guideId: "",
     });
   };
 
@@ -70,7 +70,7 @@ const AddTour = () => {
         required
         autoComplete="off"
         placeholder="Tour URL Image "
-        type="url"
+        type="text"
         className="p-2 my-2 border rounded-md border-gray-400"
       />
       <div className="flex justify-around">
@@ -144,8 +144,8 @@ const AddTour = () => {
       {/* GUIDES */}
       <select
         onChange={handleInputChange}
-        value={formValues.guide}
-        name="guide"
+        value={formValues.guideId}
+        name="guideId"
         required
         type="text"
         className="p-2 my-2 border text-gray-400 border-gray-400"
@@ -154,7 +154,9 @@ const AddTour = () => {
           Select Guide
         </option>
         {guides.map((guide) => (
-          <option key={guide._id}>{guide.name}</option>
+          <option key={guide._id} value={guide._id}>
+            {guide.name}
+          </option>
         ))}
       </select>
 

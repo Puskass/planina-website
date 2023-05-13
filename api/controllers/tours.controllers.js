@@ -31,7 +31,6 @@ exports.postTour = async (req, res) => {
 exports.getTours = async (req, res) => {
   const toursDocs = await Tour.fetchAll();
 
-  
   res.send(toursDocs);
 };
 
