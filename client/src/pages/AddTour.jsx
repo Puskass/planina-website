@@ -17,12 +17,12 @@ const AddTour = () => {
 
   const history = useHistory();
   // Unused function
-  // const handleChange = (e) => {
-  //   const min = 1;
-  //   const max = 100000;
-  //   const value = Math.max(min, Math.min(max, Number(e.target.value)));
-  //   setFormValues({ ...formValues, price: value });
-  // };
+  const handleChange = (e) => {
+    const min = 1;
+    const max = 100000;
+    const value = Math.max(min, Math.min(max, Number(e.target.value)));
+    setFormValues({ ...formValues, [e.target.name]: value });
+  };
 
   const submitTourHandler = async (e) => {
     e.preventDefault();
@@ -58,8 +58,9 @@ const AddTour = () => {
         value={formValues.imgUrl}
         name="imgUrl"
         required
+        autoComplete="off"
         placeholder="Tour URL Image "
-        type="text"
+        type="url"
         className="p-2 my-2 border rounded-md border-gray-400"
       />
       <div className="flex justify-around">
@@ -69,6 +70,7 @@ const AddTour = () => {
           name="name"
           required
           maxLength={30}
+          autoComplete="off"
           placeholder="Tour Name"
           type="text"
           className="p-2 my-2 border w-[50%] mr-4 rounded-md border-gray-400"
@@ -107,10 +109,10 @@ const AddTour = () => {
           <option defaultValue hidden>
             Fitness requirement
           </option>
-          <option value="K1">K1</option>
-          <option value="K2">K2</option>
-          <option value="K3">K3</option>
-          <option value="K4">K4</option>
+          <option>K1</option>
+          <option>K2</option>
+          <option>K3</option>
+          <option>K4</option>
         </select>
         <select
           onChange={handleInputChange}
@@ -123,23 +125,23 @@ const AddTour = () => {
           <option defaultValue hidden>
             Technical requirement
           </option>
-          <option value="T1">T1</option>
-          <option value="T2">T2</option>
-          <option value="T3">T3</option>
-          <option value="T4">T4</option>
+          <option>T1</option>
+          <option>T2</option>
+          <option>T3</option>
+          <option>T4</option>
         </select>
       </div>
       <select className="p-2 my-2 border text-gray-400 border-gray-400">
-        {/* <option value="" disabled selected hidden>
-          Select Guide
-        </option> */}
-        {/* Treba se napraviti GET request firebasu i loopat krot već zadane vodiče */}
+        <option value="" disabled defaultValue hidden>
+          Select Guide ...Not Working
+        </option>
+        {/* Treba se napraviti GET request i loopat krot već zadane vodiče */}
         <option>Emin</option>
       </select>
       {/* PRICE and LOCATION */}
       <div className="flex">
         <input
-          onChange={handleInputChange}
+          onChange={handleChange}
           value={formValues.price}
           name="price"
           required
@@ -155,6 +157,7 @@ const AddTour = () => {
           name="location"
           required
           maxLength={30}
+          autoComplete="off"
           className="p-2 my-2 border w-[50%] ml-4 rounded-md border-gray-400"
         />
       </div>
