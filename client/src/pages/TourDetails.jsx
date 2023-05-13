@@ -31,8 +31,8 @@ const TourDetails = () => {
       );
 
       setIsLoading(false);
-      setTour(tour);
       setWeather(weather);
+      setTour(tour);
     };
     doRequest();
   }, [params.id]);
@@ -42,7 +42,7 @@ const TourDetails = () => {
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <div className="max-w-lg m-auto py-4">
-          <img src={tour.imgURL} alt="Mountain" />
+          <img src={tour.imgUrl} alt="Mountain" />
 
           <h1 className="font-semibold text-2xl py-2"> {tour.name} </h1>
           <span className="font-medium"> {tour.date} </span>

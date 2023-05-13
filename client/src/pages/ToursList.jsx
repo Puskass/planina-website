@@ -23,8 +23,8 @@ const ToursList = () => {
         {isLoading && <LoadingSpinner />}
         {!isLoading &&
           tours.map((tour) => (
-            <div key={tour.id} className="max-w-lg mx-auto py-4">
-              <img src={tour.imgURL} alt="Mountain" />
+            <div key={tour._id} className="max-w-lg mx-auto py-4">
+              <img src={tour.imgUrl} alt="Mountain" />
               <div className="flex items-center justify-between ">
                 <div>
                   <h1 className="text-xl font-medium py-3">{tour.name}</h1>
