@@ -103,7 +103,6 @@ const AddTour = () => {
           name="condition"
           required
           type="text"
-          defaultValue="Fitness requirement"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
           <option defaultValue hidden>
@@ -132,9 +131,9 @@ const AddTour = () => {
         </select>
       </div>
       <select className="p-2 my-2 border text-gray-400 border-gray-400">
-        <option value="" disabled defaultValue hidden>
+        {/* <option value="" disabled defaultValue hidden>
           Select Guide ...Not Working
-        </option>
+        </option> */}
         {/* Treba se napraviti GET request i loopat krot već zadane vodiče */}
         <option>Emin</option>
       </select>
