@@ -27,7 +27,7 @@ const AddTour = () => {
 
   const submitTourHandler = async (e) => {
     e.preventDefault();
-
+    console.log(formValues);
     await axios.post(`http://localhost:5000/tour`, formValues);
 
     history.push("/tours");
