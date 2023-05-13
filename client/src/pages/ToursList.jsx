@@ -12,6 +12,7 @@ const ToursList = () => {
     const doRequest = async () => {
       setIsLoading(true);
       const { data: tours } = await axios.get("http://localhost:5000/tours");
+      console.log(tours);
       setIsLoading(false);
       setTours(tours);
     };

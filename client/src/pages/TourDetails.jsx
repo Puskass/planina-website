@@ -32,6 +32,7 @@ const TourDetails = () => {
       const { data: comments } = await axios.get(
         `http://localhost:5000/tours/${params.id}/comments`
       );
+
       setIsLoading(false);
       setWeather(weather);
       setTour(tour);
@@ -78,6 +79,7 @@ const TourDetails = () => {
           </div>
           <h2 className="font-semibold text-xl py-2">Guides</h2>
           {/* Dodati vodice */}
+          <div>{tour.guideId}</div>
           <span className="font-semibold text-xl py-2">Price</span>
           <span className="text-lg "> {tour.price}$ </span>
           {/* Komentari */}
