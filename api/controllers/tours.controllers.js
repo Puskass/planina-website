@@ -10,7 +10,7 @@ exports.postTour = async (req, res) => {
     condition,
     technique,
     price,
-    guideId,
+    guide,
   } = req.body;
 
   const tour = new Tour(
@@ -22,7 +22,7 @@ exports.postTour = async (req, res) => {
     condition,
     technique,
     price,
-    guideId
+    guide
   );
   const tourDoc = await tour.save();
   res.send(tourDoc);
