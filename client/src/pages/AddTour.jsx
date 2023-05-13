@@ -103,6 +103,7 @@ const AddTour = () => {
           name="condition"
           required
           type="text"
+          defaultValue="Fitness requirement"
           className="text-gray-400 p-2 my-2 border w-[50%] mr-4 border-gray-400"
         >
           <option defaultValue hidden>
