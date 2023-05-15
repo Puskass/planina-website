@@ -5,7 +5,7 @@ const CommentList = ({ comments }) => {
   return (
     <ul className="max-w-lg">
       {comments.map((comment) => (
-        <Comment key={comment._id} comment={comment} />
+        <Comment key={comment.id} comment={comment} />
       ))}
     </ul>
   );

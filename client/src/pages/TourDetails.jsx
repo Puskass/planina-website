@@ -11,6 +11,7 @@ const TourDetails = () => {
   const [tour, setTour] = useState({});
   const [weather, setWeather] = useState(null);
   const [comments, setComments] = useState([]);
+  const [guide, setGuide] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const onCommentPost = (comment) => {
@@ -20,25 +21,29 @@ const TourDetails = () => {
   };
 
   useEffect(() => {
-    const doRequest = async () => {
+    const fetchData = async () => {
       setIsLoading(true);
 
       const { data: tour } = await axios.get(
         `http://localhost:5000/tours/${params.id}`
       );
-      // const { data: weather } = await axios.get(
-      //   `https://api.openweathermap.org/data/2.5/weather?q=${tour.location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
-      // );  
+      const { data: weather } = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${tour.location}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      );
       const { data: comments } = await axios.get(
         `http://localhost:5000/tours/${params.id}/comments`
       );
+      const { data: guide } = await axios.get(
+        `http://localhost:5000/guides/${tour.guideId}`
+      );
 
-      setIsLoading(false);
-      // setWeather(weather);
+      setWeather(weather);
       setTour(tour);
+      setGuide(guide);
       setComments(comments);
+      setIsLoading(false);
     };
-    doRequest();
+    fetchData();
   }, [params.id]);
 
   return (
@@ -50,7 +55,7 @@ const TourDetails = () => {
 
           <h1 className="font-semibold text-2xl py-2"> {tour.name} </h1>
           <span className="font-medium"> {tour.date} </span>
-
+          {/* Vrijeme */}
           <div className="py-2">
             <h2 className="text-lg">
               Weather in <span className="font-semibold">{tour.location}</span>
@@ -68,20 +73,27 @@ const TourDetails = () => {
               </div>
             )}
           </div>
-          <h2 className="font-semibold text-xl py-2">Tour description</h2>
-          <p className="text-lg"> {tour.description} </p>
-
+          {/* Deskripcija ture */}
+          <div className=" py-2">
+            <h2 className="font-semibold text-xl">Tour description</h2>
+            <p className="text-lg"> {tour.description} </p>
+          </div>
+          {/* Zahtjevnost / Kondicija */}
           <div className="py-2">
             <span className="font-semibold text-xl pr-2">Demanding</span>
             <span className="text-lg">
               {tour.condition}/{tour.technique}
             </span>
           </div>
-          <h2 className="font-semibold text-xl py-2">Guides</h2>
-          {/* Dodati vodice */}
-          <div>{tour.guideId}</div>
+          {/* Vodi; ture */}
+          <div className="py-2">
+            <span className="font-semibold text-xl py-2 pr-2">Guides</span>
+            <span>{guide.name}</span>
+          </div>
+          {/* Cijena ture */}
           <span className="font-semibold text-xl py-2">Price</span>
           <span className="text-lg "> {tour.price}$ </span>
+
           {/* Komentari */}
           <div>
             <h2 className="font-semibold text-xl py-2">
@@ -92,7 +104,6 @@ const TourDetails = () => {
             </div>
             <div>
               <CommentList comments={comments} />
-              <div>{comments.comment}</div>
             </div>
           </div>
           <div className="text-center">
