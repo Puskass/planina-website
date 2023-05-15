@@ -27,7 +27,6 @@ const AddTour = () => {
 
   const submitTourHandler = async (e) => {
     e.preventDefault();
-    console.log(formValues);
     await axios.post(`http://localhost:5000/tour`, formValues);
 
     history.push("/tours");
@@ -70,7 +69,7 @@ const AddTour = () => {
         required
         autoComplete="off"
         placeholder="Tour URL Image "
-        type="text"
+        type="url"
         className="p-2 my-2 border rounded-md border-gray-400"
       />
       <div className="flex justify-around">
@@ -153,6 +152,7 @@ const AddTour = () => {
         <option defaultValue hidden>
           Select Guide
         </option>
+        {/* uzeo sam ime guida, saljem u bazu podatka guideId na osnovu toga napraviti jos jedna request da vidim da guideId odgovara imenu */}
         {guides.map((guide) => (
           <option key={guide._id} value={guide._id}>
             {guide.name}
@@ -183,7 +183,6 @@ const AddTour = () => {
           className="p-2 my-2 border w-[50%] ml-4 rounded-md border-gray-400"
         />
       </div>
-
       <div className="flex justify-center my-2 ">
         <Button type="submit">Add tour</Button>
       </div>
