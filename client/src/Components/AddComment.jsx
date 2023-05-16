@@ -12,7 +12,7 @@ const AddCommentForm = ({ onCommentPost }) => {
   const addCommentHandler = async (e) => {
     e.preventDefault();
     const comment = {
-      id: Math.random().toString(),
+      _id: Math.random().toString(),
       comment: enteredComment,
     };
     await axios.post(`http://localhost:5000/tours/${params.id}/comment`, {

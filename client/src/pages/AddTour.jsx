@@ -48,11 +48,17 @@ const AddTour = () => {
   };
 
   useEffect(() => {
-    const doRequest = async () => {
-      const { data: guides } = await axios.get(`http://localhost:5000/guides`);
-      setGuides(guides);
+    const fetchGuides = async () => {
+      try {
+        const { data: guides } = await axios.get(
+          `http://localhost:5000/guides`
+        );
+        setGuides(guides);
+      } catch {
+        console.error("Error fetching guides");
+      }
     };
-    doRequest();
+    fetchGuides();
   }, []);
 
   return (

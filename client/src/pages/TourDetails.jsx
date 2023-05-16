@@ -16,8 +16,8 @@ const TourDetails = () => {
   const [weatherError, setWeatherError] = useState(false);
 
   const onCommentPost = (comment) => {
-    setComments((prevState) => {
-      return [...prevState, comment];
+    setComments((prevComments) => {
+      return [...prevComments, comment];
     });
   };
 
@@ -58,6 +58,32 @@ const TourDetails = () => {
     fetchData();
   }, [params.id]);
 
+  const renderWeather = () => {
+    if (weatherError) {
+      return (
+        <p>
+          *API OpenWeatherMap <b> does not provide data </b> for entered
+          location.
+        </p>
+      );
+    }
+    if (weather) {
+      return (
+        <div>
+          <div>
+            Temperature:{" "}
+            <span className="font-semibold"> {weather.main.temp} °C</span>
+          </div>
+          <span className="text-sm font-semibold">
+            <span className="pr-4">Min {weather.main.temp_min} °C </span>
+            <span>Max {weather.main.temp_max} °C</span>
+          </span>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <>
       {isLoading && <LoadingSpinner />}
@@ -73,19 +99,7 @@ const TourDetails = () => {
             <h2 className="text-lg">
               Weather in <span className="font-semibold">{tour.location}</span>
             </h2>
-            {!weatherError && weather && (
-              <div>
-                <div>
-                  Temperature:{" "}
-                  <span className="font-semibold"> {weather.main.temp} °C</span>
-                </div>
-                <span className="text-sm font-semibold">
-                  <span className="pr-4">Min {weather.main.temp_min} °C </span>
-                  <span>Max {weather.main.temp_max} °C</span>
-                </span>
-              </div>
-            )}
-            {weatherError && <p>Error retrieving weather data.</p>}
+            {renderWeather()}
           </div>
 
           {/* Deskripcija ture */}
@@ -100,7 +114,7 @@ const TourDetails = () => {
               {tour.condition}/{tour.technique}
             </span>
           </div>
-          {/* Vodi; ture */}
+          {/* Vodič ture */}
           <div className="py-2">
             <span className="font-semibold text-xl py-2 pr-2">Guides</span>
             <span>{guide.name}</span>
@@ -118,9 +132,15 @@ const TourDetails = () => {
               <AddCommentForm onCommentPost={onCommentPost} />
             </div>
             <div>
-              <CommentList comments={comments} />
+              {comments.length > 0 ? (
+                <CommentList comments={comments} />
+              ) : (
+                <p className="text-center mb-4">No comments yet.</p>
+              )}
             </div>
+            <div>{comments.comment}</div>
           </div>
+
           <div className="text-center">
             <Button>Sign up for a tour!</Button>
           </div>
