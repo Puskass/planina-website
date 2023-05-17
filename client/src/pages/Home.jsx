@@ -1,17 +1,21 @@
-import React from 'react';
-import Image from '../components/Image';
-import Onama from '../components/Onama';
-import Vodici from '../components/Vodici';
-
+import React, { useEffect } from "react";
+import Image from "../components/Image";
 
 const Home = () => {
+  useEffect(() => {
+    // Disable scrolling on mount
+    document.body.style.overflow = "hidden";
+
+    // Re-enable scrolling on unmount
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
   return (
-    <div>
-        <Image/>
-        <Onama/>
-        <Vodici/>
-    </div>
-  )
-}
+    <>
+      <Image />
+    </>
+  );
+};
 
 export default Home;
