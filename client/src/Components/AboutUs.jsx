@@ -1,6 +1,6 @@
 import React from "react";
 
-const Onama = () => {
+const About = () => {
   return (
     <section className="block">
       <h1 className="font-normal text-5xl leading-tight text-black m-20">
@@ -26,4 +26,4 @@ const Onama = () => {
   );
 };
 
-export default Onama;
+export default About;

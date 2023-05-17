@@ -158,7 +158,6 @@ const AddTour = () => {
         <option defaultValue hidden>
           Select Guide
         </option>
-        {/* uzeo sam ime guida, saljem u bazu podatka guideId na osnovu toga napraviti jos jedna request da vidim da guideId odgovara imenu */}
         {guides.map((guide) => (
           <option key={guide._id} value={guide._id}>
             {guide.name}

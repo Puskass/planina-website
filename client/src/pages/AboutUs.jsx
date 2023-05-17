@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import About from "../components/AboutUs";
+import Guides from "../components/Guides";
 
 const AboutUs = () => {
   return (
-    <div>AboutUs bla bla bla</div>
-  )
-}
+    <div>
+      <About />
+      <Guides />
+    </div>
+  );
+};
 
-export default AboutUs
+export default AboutUs;
