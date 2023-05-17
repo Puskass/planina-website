@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "../shared/UIElemets/Button";
 import { useHistory } from "react-router-dom";
+import useFetchGuides from "../hooks/useFetchGuides";
 
 const AddTour = () => {
+  const guides = useFetchGuides();
+
   const [formValues, setFormValues] = useState({
     imgUrl: "",
     name: "",
@@ -15,7 +18,7 @@ const AddTour = () => {
     location: "",
     guideId: "",
   });
-  const [guides, setGuides] = useState([]);
+
   const history = useHistory();
 
   const handleChange = (e) => {
@@ -46,20 +49,6 @@ const AddTour = () => {
   const handleInputChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
-
-  useEffect(() => {
-    const fetchGuides = async () => {
-      try {
-        const { data: guides } = await axios.get(
-          `http://localhost:5000/guides`
-        );
-        setGuides(guides);
-      } catch {
-        console.error("Error fetching guides");
-      }
-    };
-    fetchGuides();
-  }, []);
 
   return (
     <form
